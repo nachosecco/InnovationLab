@@ -1,0 +1,88 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\ignacio.secco\\source\\repos\\BotWithLUIS\\BotWithLUIS\\BotWithLUIS.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\ignacio.secco\\source\\repos\\BotWithLUIS\\BotWithLUIS\\BotWithLUIS.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\ignacio.secco\\source\\repos\\BotWithLUIS\\BotWithLUIS\\BotWithLUIS.csproj",
+        "projectName": "BotWithLUIS",
+        "projectPath": "C:\\Users\\ignacio.secco\\source\\repos\\BotWithLUIS\\BotWithLUIS\\BotWithLUIS.csproj",
+        "packagesPath": "C:\\Users\\ignacio.secco\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ignacio.secco\\source\\repos\\BotWithLUIS\\BotWithLUIS\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\ignacio.secco\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.1": {
+          "dependencies": {
+            "Microsoft.AspNetCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.1.1, )",
+              "autoReferenced": true
+            },
+            "Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime": {
+              "target": "Package",
+              "version": "[2.1.0, )"
+            },
+            "Microsoft.Bot.Builder.AI.Luis": {
+              "target": "Package",
+              "version": "[4.4.5, )"
+            },
+            "Microsoft.Bot.Builder.Dialogs": {
+              "target": "Package",
+              "version": "[4.4.5, )"
+            },
+            "Microsoft.Bot.Builder.Integration.AspNet.Core": {
+              "target": "Package",
+              "version": "[4.4.5, )"
+            },
+            "Microsoft.Graph": {
+              "target": "Package",
+              "version": "[1.15.0, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.1.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.Recognizers.Text.DataTypes.TimexExpression": {
+              "target": "Package",
+              "version": "[1.2.3, )"
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}
