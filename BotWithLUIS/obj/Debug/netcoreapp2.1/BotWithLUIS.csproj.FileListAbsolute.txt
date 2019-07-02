@@ -1,0 +1,15 @@
+C:\Users\ignacio.secco\source\repos\BotWithLUIS\BotWithLUIS\bin\Debug\netcoreapp2.1\appsettings.json
+C:\Users\ignacio.secco\source\repos\BotWithLUIS\BotWithLUIS\bin\Debug\netcoreapp2.1\BotWithLUIS.deps.json
+C:\Users\ignacio.secco\source\repos\BotWithLUIS\BotWithLUIS\bin\Debug\netcoreapp2.1\BotWithLUIS.runtimeconfig.json
+C:\Users\ignacio.secco\source\repos\BotWithLUIS\BotWithLUIS\bin\Debug\netcoreapp2.1\BotWithLUIS.runtimeconfig.dev.json
+C:\Users\ignacio.secco\source\repos\BotWithLUIS\BotWithLUIS\bin\Debug\netcoreapp2.1\BotWithLUIS.dll
+C:\Users\ignacio.secco\source\repos\BotWithLUIS\BotWithLUIS\bin\Debug\netcoreapp2.1\BotWithLUIS.pdb
+C:\Users\ignacio.secco\source\repos\BotWithLUIS\BotWithLUIS\obj\Debug\netcoreapp2.1\BotWithLUIS.csproj.CoreCompileInputs.cache
+C:\Users\ignacio.secco\source\repos\BotWithLUIS\BotWithLUIS\obj\Debug\netcoreapp2.1\BotWithLUIS.RazorAssemblyInfo.cache
+C:\Users\ignacio.secco\source\repos\BotWithLUIS\BotWithLUIS\obj\Debug\netcoreapp2.1\BotWithLUIS.RazorAssemblyInfo.cs
+C:\Users\ignacio.secco\source\repos\BotWithLUIS\BotWithLUIS\obj\Debug\netcoreapp2.1\BotWithLUIS.AssemblyInfoInputs.cache
+C:\Users\ignacio.secco\source\repos\BotWithLUIS\BotWithLUIS\obj\Debug\netcoreapp2.1\BotWithLUIS.AssemblyInfo.cs
+C:\Users\ignacio.secco\source\repos\BotWithLUIS\BotWithLUIS\obj\Debug\netcoreapp2.1\BotWithLUIS.RazorTargetAssemblyInfo.cache
+C:\Users\ignacio.secco\source\repos\BotWithLUIS\BotWithLUIS\obj\Debug\netcoreapp2.1\BotWithLUIS.dll
+C:\Users\ignacio.secco\source\repos\BotWithLUIS\BotWithLUIS\obj\Debug\netcoreapp2.1\BotWithLUIS.pdb
+C:\Users\ignacio.secco\source\repos\BotWithLUIS\BotWithLUIS\obj\Debug\netcoreapp2.1\BotWithLUIS.csprojAssemblyReference.cache
