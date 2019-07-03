@@ -1,0 +1,50 @@
+
+
+------------------------------- >>>>> [ SSL debugger ] <<<<< -------------------------------
+https://localhost:44394/
+
+------------------------------- >>>>> [ NGROK para Teams ] <<<<< -------------------------------
+
+
+ngrok http 3978 -host-header="localhost:3978"
+
+ngrok.exe http 5000 -host-header="localhost:5000"
+
+
+------------------------------- >>>>> [ ID EchoBot ] <<<<< -------------------------------
+
+Echobot_ID: f7ea8b1f-c563-42ea-a67a-27b9cd718690
+PWD: Vn:@JJJv0R4CCer*akqm-GvD2GMMMgS4
+
+------------------------------- >>>>> [ ID LUIS_app ] <<<<< -------------------------------
+
+LUIS: 5371913a-76d3-4f66-878d-1c6e8b0c38bf
+Key: ffa8d6aa6add420c80197788900dd208
+https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/5371913a-76d3-4f66-878d-1c6e8b0c38bf?verbose=true&timezoneOffset=-360&subscription-key=ffa8d6aa6add420c80197788900dd208&q=
+
+{
+  "MicrosoftAppId": "f7ea8b1f-c563-42ea-a67a-27b9cd718690",
+  "MicrosoftAppPassword": "Vn:@JJJv0R4CCer*akqm-GvD2GMMMgS4",
+  "LuisAppId": "5371913a-76d3-4f66-878d-1c6e8b0c38bf",
+  "LuisAPIKey": "ffa8d6aa6add420c80197788900dd208",
+  "LuisAPIHostName": "https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/5371913a-76d3-4f66-878d-1c6e8b0c38bf?verbose=true&timezoneOffset=-360&subscription-key=ffa8d6aa6add420c80197788900dd208&q="
+}
+
+
+------------------------------- >>>>> [ APP AD ] <<<<< -------------------------------
+Nombre: AD_ConsultasMail
+App_ID: bf8851ee-104d-4559-bd1d-b1580985f0c7
+
+
+"azureAdTenant": "iseccooutlook.onmicrosoft.com",
+  "clientId": "bf8851ee-104d-4559-bd1d-b1580985f0c7",
+  "userConsentRedirectUri": "https://localhost:44339/userconsentredirect",
+  "permissionsRequested": "Calendars.ReadWrite.Shared",
+  "clientSecret": "<CLIENT_SECRET>"
+
+------------------------------- >>>>> [ Bot + LUIS + Office365 ] <<<<< -------------------------------
+
+Parte 1: https://www.youtube.com/watch?v=2AePe_PhSzE
+Parte 2: https://www.youtube.com/watch?v=lKZ1wm7jrfs
+Parte 3: https://www.youtube.com/watch?v=acMiEJey0Pw
+Parte 4: https://www.youtube.com/watch?v=j7_hY-ICm9E

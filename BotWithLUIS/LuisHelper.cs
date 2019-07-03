@@ -5,12 +5,15 @@
 
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.AI.Luis;
+using Microsoft.Bot.Schema;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+
 
 namespace BotWithLUIS
 {
@@ -29,16 +32,18 @@ namespace BotWithLUIS
                     configuration["LuisAPIKey"],
                     "https://" + configuration["LuisAPIHostName"]
                 );
-
                 var recognizer = new LuisRecognizer(luisApplication);
-
                 // The actual call to LUIS
                 var recognizerResult = await recognizer.RecognizeAsync(turnContext, cancellationToken);
-
                 var (intent, score) = recognizerResult.GetTopScoringIntent();
 
                 details.InfoRequest = recognizerResult.Text;
                 details.ActualIntent = intent;
+
+                var attachments = new List<Attachment>();
+                // Reply to the activity we received with an activity.
+                details.Reply = MessageFactory.Attachment(attachments);
+
 
                 if (intent == "ShowBenefitsContactInfo")
                 {
@@ -47,7 +52,9 @@ namespace BotWithLUIS
 
                 if (intent == "ShowBenefits")
                 {
-                    details.InfoRespond = "Llamada a show benefits";
+                    //details.InfoRespond = "Llamada a show benefits";
+                    details.Reply.Text += "Llamada a show benefits";
+                    details.Reply.Attachments.Add(Cards.GetAnimationCard().ToAttachment());
                 }
 
                 if (intent == "ShowBenefitsWFH")
@@ -80,7 +87,7 @@ namespace BotWithLUIS
                     details.InfoRespond = "Llamada a Show Service Desk Support ";
                 }
 
-                if (intent == "Thanks")
+                if (intent == "Greetings")
                 {
                     details.InfoRespond = "Setear intent null para seguir la charla?";
                 }
@@ -101,6 +108,6 @@ namespace BotWithLUIS
         {
             details.ConversationStarted = true;
         }
-    
+        
     }
 }

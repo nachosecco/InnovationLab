@@ -18,16 +18,18 @@ namespace BotWithLUIS.Dialogs
     {
         protected readonly IConfiguration Configuration;
         protected readonly ILogger Logger;
+        protected string stopper;
+        protected Boolean newChat;
 
         public WelcomeDialog(IConfiguration configuration, ILogger<WelcomeDialog> logger)
             : base(nameof(WelcomeDialog))
         {
             Configuration = configuration;
             Logger = logger;
+            stopper = "stop";
+            newChat = true;
 
             AddDialog(new TextPrompt(nameof(TextPrompt)));
-            AddDialog(new GeneralDialog());
-            AddDialog(new ConfirmPrompt(nameof(ConfirmPrompt)));
             AddDialog(new WaterfallDialog(nameof(WaterfallDialog), new WaterfallStep[]
             {
                 IntroStepAsync,
@@ -50,59 +52,89 @@ namespace BotWithLUIS.Dialogs
             }
             else
             {
-                return await stepContext.BeginDialogAsync(nameof(TextPrompt), new PromptOptions { Prompt = MessageFactory.Text("Welcome!") }, cancellationToken);
+                if(!newChat || stepContext.Context.Activity.Label == "keep_talking")
+                {
+                    return await stepContext.NextAsync(stepContext, cancellationToken);
+                }
+                else
+                {
+
+                    var responseMessage = stepContext.Context.Activity.Text.ToLower();
+
+                    if(responseMessage == stopper)
+                    {
+                        newChat = true;
+                        return await FinishConversation(stepContext, cancellationToken);
+                    }
+                    else
+                    {
+                        newChat = false;
+                        await stepContext.Context.SendActivityAsync(MessageFactory.Text("My name is Chatboarding, if you share your thoughts with me, I can help you! Type \'STOP\' anytime you wanna leave."));
+                        return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = MessageFactory.Text("Tell me something challenging, come on...") }, cancellationToken);
+                    }
+
+                }
             }
         }
 
         private async Task<DialogTurnResult> ActStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            // Call LUIS and gather any potential details. (Note the TurnContext has the response to the prompt.)
-            var globalDetails = stepContext.Result != null
+            var responseMessage = stepContext.Context.Activity.Text.ToLower();
+            if(responseMessage == stopper)
+            {
+                return await FinishConversation(stepContext, cancellationToken);
+            }
+            else
+            {
+                // Call LUIS and gather any potential details. (Note the TurnContext has the response to the prompt.)
+                var globalDetails = stepContext.Result != null
                     ?
                 await LuisHelper.ExecuteLuisQuery(Configuration, Logger, stepContext.Context, cancellationToken)
                     :
                 new GlobalDetails();
-
-            if(stepContext.Result == null)
-            {
-                return await stepContext.BeginDialogAsync(nameof(GeneralDialog), globalDetails, cancellationToken);
-            }
-            else
-            {
                 return await stepContext.NextAsync(globalDetails, cancellationToken);
             }
+
         }
 
         private async Task<DialogTurnResult> FinalStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
+
             // If the child dialog ("GeneralDialog") was cancelled or the user failed to confirm, the Result here will be null.
             if (stepContext.Result != null)
             {
                 var result = (GlobalDetails)stepContext.Result;
 
-                // Now we have all the booking details call the booking service.
-
-                // If the call to the booking service was successful tell the user.
-
                 var msg = $"Here is what I've found about: \"{result.InfoRequest}\" \n" +
                     $"  {result.InfoRespond}";
-                await stepContext.Context.SendActivityAsync(MessageFactory.Text(msg), cancellationToken);
+                
+                await stepContext.Context.SendActivityAsync(result.Reply);
+                await stepContext.Context.SendActivityAsync(MessageFactory.Text("What else can I do for you?"));
 
-                var satisfactionMsg = "Wanna keep talking to me?";
-                await stepContext.Context.SendActivityAsync(MessageFactory.Text(satisfactionMsg), cancellationToken);
-                var responseMessage = stepContext.Context.Activity.Text;
-                if(responseMessage.ToLower() == "yes" || responseMessage.ToLower() == "off course")
+                var responseMessage = stepContext.Context.Activity.Text.ToLower();
+                if(responseMessage == stopper)
                 {
-                    return await stepContext.ContinueDialogAsync(cancellationToken);
+                    return await FinishConversation(stepContext, cancellationToken);
+                }
+                else
+                {
+                    stepContext.Context.Activity.Label = "keep_talking";
+                    newChat = false;
+                    return await ActStepAsync(stepContext, cancellationToken);
                 }
             }
             else
             {
                 await stepContext.Context.SendActivityAsync(MessageFactory.Text("Thank you."), cancellationToken);
-                
+                return await FinishConversation(stepContext, cancellationToken);
             }
 
-            return await stepContext.EndDialogAsync(cancellationToken: cancellationToken);
         }
+        private Task<DialogTurnResult> FinishConversation(WaterfallStepContext stepContext, CancellationToken cancellationToken)
+        {
+            newChat = true;
+            return stepContext.EndDialogAsync(cancellationToken: cancellationToken);
+        }
+
     }
 }
