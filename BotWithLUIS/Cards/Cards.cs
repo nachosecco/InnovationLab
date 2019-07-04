@@ -85,17 +85,21 @@ namespace BotWithLUIS
                         quantity: "$1150",
                         image: new CardImage(url: "https://www.nottingham.ac.uk/sharedresources/images/iconography/icon-childcare.png")),
                 },
-                Buttons = new List<CardAction>
-                {
-                    new CardAction(
-                        ActionTypes.OpenUrl,
-                        "More about it",
-                        "https://account.windowsazure.com/content/6.10.1.38-.8225.160809-1618/aux-pre/images/offer-icon-freetrial.png",
-                        value: "https://www.endava.com/en/Contact"),
-                },
             };
 
             return receiptCard;
+        }
+        public static ThumbnailCard GetBenefitsDescriptionCard(string textBody)
+        {
+            var companyCard = new ThumbnailCard
+            {
+                Title = "Description of the benefits",
+                Text = textBody,
+                Images = new List<CardImage> { new CardImage("https://s2.studylib.net/store/data/005525748_1-bb9ce29028162a7ed07a21c641cffd86.png") },
+                Buttons = new List<CardAction> { new CardAction(ActionTypes.OpenUrl, "Be more..", value: "https://www.endava.com/en") },
+            };
+
+            return companyCard;
         }
         public static HeroCard GetCommunitiesCard(string textBody)
         {
@@ -123,6 +127,20 @@ namespace BotWithLUIS
             };
 
             return companyCard;
+        }
+
+        public static ThumbnailCard GetDaysOffCard(string textBody)
+        {
+            var daysOff = new ThumbnailCard
+            {
+                Title = "Days Off availability",
+                Subtitle = "Welcome to Endava",
+                Text = textBody,
+                Images = new List<CardImage> { new CardImage("https://s2.studylib.net/store/data/005525748_1-bb9ce29028162a7ed07a21c641cffd86.png") },
+                Buttons = new List<CardAction> { new CardAction(ActionTypes.OpenUrl, "Be more..", value: "https://www.endava.com/en") },
+            };
+
+            return daysOff;
         }
 
         public static SigninCard GetSigninCard()

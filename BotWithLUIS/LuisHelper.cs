@@ -57,6 +57,7 @@ namespace BotWithLUIS
                 if (intent == "ShowBenefits")
                 {
                     details.Reply.Attachments.Add(Cards.GetBenefitsCard(textBody).ToAttachment());
+                    details.Reply.Attachments.Add(Cards.GetBenefitsDescriptionCard(textBody).ToAttachment());
 
                 }
 
@@ -72,16 +73,13 @@ namespace BotWithLUIS
 
                 if (intent == "ShowCompanyInfo")
                 {
-                    string _textBody = "Deserialized body for the \'Company\' intent performed by Raidell's method.";
-                    details.Reply.Text += "Llamada a show Company";
-                    details.Reply.Attachments.Add(Cards.GetCompanyCard(_textBody).ToAttachment());
+                    details.Reply.Attachments.Add(Cards.GetCompanyCard(textBody).ToAttachment());
                 }
 
                 if (intent == "ShowDaysOff")
                 {
-                    string _textBody = "Deserialized body for the \'DaysOff\' intent performed by Raidell's method.";
-                    details.Reply.Text += "Llamada a show DaysOff";
-                    // details.Reply.Attachments.Add(Cards.GetDaysOffCard(textBody).ToAttachment());
+
+                    details.Reply.Attachments.Add(Cards.GetDaysOffCard(textBody).ToAttachment());
                 }
 
                 if (intent == "ShowReferralsInfo")
