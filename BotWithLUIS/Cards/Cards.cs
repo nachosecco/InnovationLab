@@ -57,9 +57,9 @@ namespace BotWithLUIS
             var benefitsContactCard = new ThumbnailCard
             {
                 Title = "Benefits of Endavans",
-                Subtitle = "Who to talk about:",
+                Subtitle = "Enjoy your work life!",
                 Text = textBody,
-                Images = new List<CardImage> { new CardImage("https://sec.ch9.ms/ch9/7ff5/e07cfef0-aa3b-40bb-9baa-7c9ef8ff7ff5/buildreactionbotframework_960.jpg") },
+                Images = new List<CardImage> { new CardImage("https://media.glassdoor.com/l/51/e7/c0/21/life-and-work-at-endava.jpg") },
                 Buttons = new List<CardAction> { new CardAction(ActionTypes.OpenUrl, "How to manage them.", value: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTujZhHZ6BUq1J9mi0IkuCvqCmtoQN6JkWB3gOS90KkOupuIAe") },
             };
 
@@ -82,7 +82,7 @@ namespace BotWithLUIS
         {
             var referrelsCard = new ThumbnailCard
             {
-                Title = "Help desk information",
+                Title = "Service Desk for the rescue!",
                 Text = textBody,
                 Images = new List<CardImage> { new CardImage("https://www.endava.com/-/media/EndavaDigital/Endava/Images/ServicesInnerPages/AdvancedAM/Icons/PNG/Application-Management-Orange.ashx") },
             };
