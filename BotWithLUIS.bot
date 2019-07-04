@@ -4,8 +4,8 @@
     "services": [
         {
             "type": "endpoint",
-            "appId": "f7ea8b1f-c563-42ea-a67a-27b9cd718690",
-            "appPassword": "Vn:@JJJv0R4CCer*akqm-GvD2GMMMgS4",
+            "appId": "87cf8fce-91a6-47ab-a050-e64b334cd0a3",
+            "appPassword": "s9xp+DlfqL:_J*xSr4e5ADu2CTnQaU7+",
             "channelService": "",
             "endpoint": "http://localhost:5000/api/messages",
             "id": "bbf0ad80-98f6-11e9-9974-d18e5ff1117d",
@@ -14,12 +14,12 @@
         {
             "type": "endpoint",
             "endpoint": "http://localhost:5000/api/messages",
-            "name": "CoreBot",
-            "id": "202"
+            "id": "202",
+            "name": "CoreBot"
         }
     ],
     "padlock": "",
     "version": "2.0",
-    "overrides": null,
-    "path": "C:\\Users\\ignacio.secco\\source\\repos\\BotWithLUIS\\BotWithLUIS.bot"
+    "path": "C:\\Users\\ignacio.secco\\source\\repos\\BotWithLUIS\\BotWithLUIS.bot",
+    "overrides": null
 }

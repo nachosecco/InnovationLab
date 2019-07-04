@@ -84,16 +84,12 @@ namespace BotWithLUIS
 
                 if (intent == "ShowReferralsInfo")
                 {
-                    string _textBody = "Deserialized body for the \'Referrals\' intent performed by Raidell's method.";
-                    // details.Reply.Text += "Llamada a show Referrals";
                     details.Reply.Attachments.Add(Cards.GetReferralsCard(textBody).ToAttachment());
                 }
 
                 if (intent == "ShowServiceDeskSupport")
                 {
-                    string _textBody = "Deserialized body for the \'ServiceDeskSupport\' intent performed by Raidell's method.";
-                    details.Reply.Text += "Llamada a show ServiceDeskSupport";
-                    //details.Reply.Attachments.Add(Cards.GetServiceDeskSupportCard(textBody).ToAttachment());
+                    details.Reply.Attachments.Add(Cards.GetServiceDeskSupportCard(textBody).ToAttachment());
                 }
 
                 if (intent == "None")

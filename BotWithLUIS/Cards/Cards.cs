@@ -42,7 +42,7 @@ namespace BotWithLUIS
         {
             var benefitsWFHCard = new ThumbnailCard
             {
-                Title = "Benefits of Endavans",
+                Title = "Stay productive at home!",
                 Subtitle = "We believe in Home Office!",
                 Text = textBody,
                 Images = new List<CardImage> { new CardImage("https://i.ytimg.com/vi/eDuAqIsfKds/maxresdefault.jpg") },
@@ -64,6 +64,30 @@ namespace BotWithLUIS
             };
 
             return benefitsContactCard;
+        }
+
+        public static ThumbnailCard GetReferralsCard(string textBody)
+        {
+            var referrelsCard = new ThumbnailCard
+            {
+                Title = "Referrals Policy",
+                Text = textBody,
+                Images = new List<CardImage> { new CardImage("https://pbs.twimg.com/media/DtrJgE-WoAEN4lr.jpg") },
+            };
+
+            return referrelsCard;
+        }
+
+        public static ThumbnailCard GetServiceDeskSupportCard(string textBody)
+        {
+            var referrelsCard = new ThumbnailCard
+            {
+                Title = "Help desk information",
+                Text = textBody,
+                Images = new List<CardImage> { new CardImage("https://www.endava.com/-/media/EndavaDigital/Endava/Images/ServicesInnerPages/AdvancedAM/Icons/PNG/Application-Management-Orange.ashx") },
+            };
+
+            return referrelsCard;
         }
         public static ReceiptCard GetBenefitsCard(string textBody)
         {
