@@ -65,11 +65,11 @@ namespace BotWithLUIS
 
             return benefitsContactCard;
         }
-        public static ReceiptCard GetBenefitsCard()
+        public static ReceiptCard GetBenefitsCard(string textBody)
         {
             var receiptCard = new ReceiptCard
             {
-                Title = "Benefits of John Doe:",
+                Title = "Benefits of Endavans:",
                 Items = new List<ReceiptItem>
                 {
                     new ReceiptItem(

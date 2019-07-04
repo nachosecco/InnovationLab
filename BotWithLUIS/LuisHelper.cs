@@ -8,8 +8,10 @@ using Microsoft.Bot.Builder.AI.Luis;
 using Microsoft.Bot.Schema;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -39,6 +41,7 @@ namespace BotWithLUIS
 
                 details.InfoRequest = recognizerResult.Text;
                 details.ActualIntent = intent;
+                string textBody = GetIntentionValue(logger,intent);
 
                 var attachments = new List<Attachment>();
                 // Reply to the activity we received with an activity.
@@ -47,66 +50,58 @@ namespace BotWithLUIS
 
                 if (intent == "ShowBenefitsContactInfo")
                 {
-                    string textBody = "Deserialized body for the \'benefitsContact\' intent performed by Raidell's method.";
-                    details.Reply.Text += "Llamada a show benefitsContact";
+
                     details.Reply.Attachments.Add(Cards.GetBenefitsContactCard(textBody).ToAttachment());
                 }
 
                 if (intent == "ShowBenefits")
                 {
-                    string textBody = "Deserialized body for the \'benefits\' intent performed by Raidell's method.";
-                    details.Reply.Text += textBody;
-                    details.Reply.Attachments.Add(Cards.GetBenefitsCard().ToAttachment());
-                    
+                    details.Reply.Attachments.Add(Cards.GetBenefitsCard(textBody).ToAttachment());
+
                 }
 
                 if (intent == "ShowBenefitsWFH")
                 {
-                    string textBody = "Deserialized body for the \'benefitsWFH\' intent performed by Raidell's method.";
-                    details.Reply.Text += "Llamada a show benefitsWFH";
                     details.Reply.Attachments.Add(Cards.GetBenefitsWFHCard(textBody).ToAttachment());
                 }
 
                 if (intent == "ShowCommunities")
                 {
-                    string textBody = "Deserialized body for the \'Communities\' intent performed by Raidell's method.";
-                    details.Reply.Text += "Llamada a show Communities";
                     details.Reply.Attachments.Add(Cards.GetCommunitiesCard(textBody).ToAttachment());
                 }
 
                 if (intent == "ShowCompanyInfo")
                 {
-                    string textBody = "Deserialized body for the \'Company\' intent performed by Raidell's method.";
+                    string _textBody = "Deserialized body for the \'Company\' intent performed by Raidell's method.";
                     details.Reply.Text += "Llamada a show Company";
-                    details.Reply.Attachments.Add(Cards.GetCompanyCard(textBody).ToAttachment());
+                    details.Reply.Attachments.Add(Cards.GetCompanyCard(_textBody).ToAttachment());
                 }
 
                 if (intent == "ShowDaysOff")
                 {
-                    string textBody = "Deserialized body for the \'DaysOff\' intent performed by Raidell's method.";
+                    string _textBody = "Deserialized body for the \'DaysOff\' intent performed by Raidell's method.";
                     details.Reply.Text += "Llamada a show DaysOff";
-                   // details.Reply.Attachments.Add(Cards.GetDaysOffCard(textBody).ToAttachment());
+                    // details.Reply.Attachments.Add(Cards.GetDaysOffCard(textBody).ToAttachment());
                 }
 
                 if (intent == "ShowReferralsInfo")
                 {
-                    string textBody = "Deserialized body for the \'Referrals\' intent performed by Raidell's method.";
+                    string _textBody = "Deserialized body for the \'Referrals\' intent performed by Raidell's method.";
                     details.Reply.Text += "Llamada a show Referrals";
                     //details.Reply.Attachments.Add(Cards.GetReferralsCard(textBody).ToAttachment());
                 }
 
                 if (intent == "ShowServiceDeskSupport")
                 {
-                    string textBody = "Deserialized body for the \'ServiceDeskSupport\' intent performed by Raidell's method.";
+                    string _textBody = "Deserialized body for the \'ServiceDeskSupport\' intent performed by Raidell's method.";
                     details.Reply.Text += "Llamada a show ServiceDeskSupport";
                     //details.Reply.Attachments.Add(Cards.GetServiceDeskSupportCard(textBody).ToAttachment());
                 }
 
                 if (intent == "None")
                 {
-                    string textBody = "Deserialized body for the \'benefitsContact\' intent performed by Raidell's method.";
-                    details.Reply.Text += "Llamada a show benefitsContact";
-                    details.Reply.Attachments.Add(Cards.GetBenefitsContactCard(textBody).ToAttachment());
+                    details.InfoRespond = "No encontró una Intent predefinida. ";
+
                 }
             }
             catch (Exception e)
@@ -117,6 +112,35 @@ namespace BotWithLUIS
             return details;
         }
 
+        private static string GetIntentionValue(ILogger logger, string intention)
+        {
+            try
+            {
+
+                string[] paths = { ".", "IntentionsInfo", "intentionsInfo.json" };
+                string fullPath = Path.Combine(paths);
+                using (StreamReader r = new StreamReader(fullPath))
+                {
+                    var json = r.ReadToEnd();
+                    var jobj = JObject.Parse(json);
+                    foreach (var item in jobj.Properties())
+                    {
+                        if (item.Name == intention)
+                        {
+                            return item.Value.ToString();
+                        }
+                    }
+
+                } return string.Empty;
+            }
+            catch (Exception e)
+            {
+                logger.LogWarning($"LUIS Exception: {e.Message} Check your LUIS configuration.");
+                return "";
+            }
+            
+        }
+        
         public static void StartConversation(GlobalDetails details)
         {
             details.ConversationStarted = true;
