@@ -85,8 +85,8 @@ namespace BotWithLUIS
                 if (intent == "ShowReferralsInfo")
                 {
                     string _textBody = "Deserialized body for the \'Referrals\' intent performed by Raidell's method.";
-                    details.Reply.Text += "Llamada a show Referrals";
-                    //details.Reply.Attachments.Add(Cards.GetReferralsCard(textBody).ToAttachment());
+                    // details.Reply.Text += "Llamada a show Referrals";
+                    details.Reply.Attachments.Add(Cards.GetReferralsCard(textBody).ToAttachment());
                 }
 
                 if (intent == "ShowServiceDeskSupport")
