@@ -12,7 +12,7 @@ namespace BotWithLUIS
         public static Attachment CreateAdaptiveCardAttachment()
         {
             // combine path for cross platform support
-            string[] paths = { ".", "Resources", "adaptiveCard.json" };
+            string[] paths = { ".", "Cards", "benefitsCard.json" };
             var adaptiveCardJson = File.ReadAllText(Path.Combine(paths));
 
             var adaptiveCardAttachment = new Attachment()
@@ -23,68 +23,106 @@ namespace BotWithLUIS
             return adaptiveCardAttachment;
         }
 
-        public static HeroCard GetHeroCard()
+        public static HeroCard GetWelcomeCard()
         {
-            var heroCard = new HeroCard
+            var welcomeCard = new HeroCard
             {
-                Title = "BotFramework Hero Card",
-                Subtitle = "Microsoft Bot Framework",
-                Text = "Build and connect intelligent bots to interact with your users naturally wherever they are," +
-                       " from text/sms to Skype, Slack, Office 365 mail and other popular services.",
-                Images = new List<CardImage> { new CardImage("https://sec.ch9.ms/ch9/7ff5/e07cfef0-aa3b-40bb-9baa-7c9ef8ff7ff5/buildreactionbotframework_960.jpg") },
-                Buttons = new List<CardAction> { new CardAction(ActionTypes.OpenUrl, "Get Started", value: "https://docs.microsoft.com/bot-framework") },
+                Title = "Endava's ChatBoarding Bot",
+                Subtitle = "InnovationLabs",
+                Text = "Built to help you on the process of OnBoarding to Endava. " +
+                       "I will fetch you only important info from Office 365 mail and other popular services.",
+                Images = new List<CardImage> { new CardImage("https://is4-ssl.mzstatic.com/image/thumb/Purple113/v4/41/f9/5f/41f95fdd-90d0-365e-2a35-2f847826b9aa/AppIcon-0-1x_U007emarketing-0-0-85-220-7.png/320x0w.jpg") },
+                Buttons = new List<CardAction> { new CardAction(ActionTypes.OpenUrl, "Get an overview of the company", value: "https://www.endava.com/"), new CardAction(ActionTypes.OpenUrl, "Know where are our offices", value: "https://www.google.com/search?rlz=1C1CHBF_esUY850UY850&biw=1536&bih=754&q=endava+uruguay&npsic=0&rflfq=1&rlha=0&rllag=-34905902,-56194884,141&tbm=lcl&ved=2ahUKEwjlwviw35jjAhUQIbkGHQEnAhgQtgN6BAgKEAQ&tbs=lrf:!2m4!1e17!4m2!17m1!1e2!2m1!1e3!3sIAE,lf:1,lf_ui:4&rldoc=1#rlfi=hd:;si:;mv:!1m2!1d-34.9054849!2d-56.193191799999994!2m2!1d-34.9062491!2d-56.196577999999995!3m12!1m3!1d374.9193153319924!2d-56.1948849!3d-34.905867!2m3!1f0!2f0!3f0!3m2!1i79!2i22!4f13.1;tbs:lrf:!2m1!1e3!2m4!1e17!4m2!17m1!1e2!3sIAE,lf:1,lf_ui:4"), new CardAction(ActionTypes.OpenUrl, "Know a little bit more about it..", value: "https://endava.sharepoint.com/") },
             };
 
-            return heroCard;
+            return welcomeCard;
         }
 
-        public static ThumbnailCard GetThumbnailCard()
+        public static ThumbnailCard GetBenefitsWFHCard(string textBody)
         {
-            var heroCard = new ThumbnailCard
+            var benefitsWFHCard = new ThumbnailCard
             {
-                Title = "BotFramework Thumbnail Card",
-                Subtitle = "Microsoft Bot Framework",
-                Text = "Build and connect intelligent bots to interact with your users naturally wherever they are," +
-                       " from text/sms to Skype, Slack, Office 365 mail and other popular services.",
-                Images = new List<CardImage> { new CardImage("https://sec.ch9.ms/ch9/7ff5/e07cfef0-aa3b-40bb-9baa-7c9ef8ff7ff5/buildreactionbotframework_960.jpg") },
-                Buttons = new List<CardAction> { new CardAction(ActionTypes.OpenUrl, "Get Started", value: "https://docs.microsoft.com/bot-framework") },
+                Title = "Benefits of Endavans",
+                Subtitle = "We believe in Home Office!",
+                Text = textBody,
+                Images = new List<CardImage> { new CardImage("https://i.ytimg.com/vi/eDuAqIsfKds/maxresdefault.jpg") },
+                Buttons = new List<CardAction> { new CardAction(ActionTypes.OpenUrl, "Show me more.", value: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTujZhHZ6BUq1J9mi0IkuCvqCmtoQN6JkWB3gOS90KkOupuIAe") },
             };
 
-            return heroCard;
+            return benefitsWFHCard;
         }
 
-        public static ReceiptCard GetReceiptCard()
+        public static ThumbnailCard GetBenefitsContactCard(string textBody)
+        {
+            var benefitsContactCard = new ThumbnailCard
+            {
+                Title = "Benefits of Endavans",
+                Subtitle = "Who to talk about:",
+                Text = textBody,
+                Images = new List<CardImage> { new CardImage("https://sec.ch9.ms/ch9/7ff5/e07cfef0-aa3b-40bb-9baa-7c9ef8ff7ff5/buildreactionbotframework_960.jpg") },
+                Buttons = new List<CardAction> { new CardAction(ActionTypes.OpenUrl, "How to manage them.", value: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTujZhHZ6BUq1J9mi0IkuCvqCmtoQN6JkWB3gOS90KkOupuIAe") },
+            };
+
+            return benefitsContactCard;
+        }
+        public static ReceiptCard GetBenefitsCard()
         {
             var receiptCard = new ReceiptCard
             {
-                Title = "John Doe",
-                Facts = new List<Fact> { new Fact("Order Number", "1234"), new Fact("Payment Method", "VISA 5555-****") },
+                Title = "Benefits of John Doe:",
                 Items = new List<ReceiptItem>
                 {
                     new ReceiptItem(
-                        "Data Transfer",
-                        price: "$ 38.45",
-                        quantity: "368",
-                        image: new CardImage(url: "https://github.com/amido/azure-vector-icons/raw/master/renders/traffic-manager.png")),
+                        "Gym allowance",
+                        quantity: "$1150",
+                        image: new CardImage(url: "http://icons.iconarchive.com/icons/sonya/swarm/256/gym-icon.png")),
                     new ReceiptItem(
-                        "App Service",
-                        price: "$ 45.00",
-                        quantity: "720",
-                        image: new CardImage(url: "https://github.com/amido/azure-vector-icons/raw/master/renders/cloud-service.png")),
+                        "Books allowance",
+                        quantity: "$1150",
+                        image: new CardImage(url: "https://www.clipartmax.com/png/middle/254-2544942_ebooks-white-papers-open-book-icon.png")),
+                    new ReceiptItem(
+                        "Child care",
+                        quantity: "$1150",
+                        image: new CardImage(url: "https://www.nottingham.ac.uk/sharedresources/images/iconography/icon-childcare.png")),
                 },
-                Tax = "$ 7.50",
-                Total = "$ 90.95",
                 Buttons = new List<CardAction>
                 {
                     new CardAction(
                         ActionTypes.OpenUrl,
-                        "More information",
+                        "More about it",
                         "https://account.windowsazure.com/content/6.10.1.38-.8225.160809-1618/aux-pre/images/offer-icon-freetrial.png",
-                        value: "https://azure.microsoft.com/en-us/pricing/"),
+                        value: "https://www.endava.com/en/Contact"),
                 },
             };
 
             return receiptCard;
+        }
+        public static HeroCard GetCommunitiesCard(string textBody)
+        {
+            var communitiesCard = new HeroCard
+            {
+                Title = "Endava's Communities",
+                Subtitle = "Technical communities",
+                Text = textBody,
+                Images = new List<CardImage> { new CardImage("https://www.endava.com/-/media/EndavaDigital/Endava/Images/ImagesWithOurPeople/Desktop/Inner_650x650_SS14-B.ashx") },
+                Buttons = new List<CardAction> { new CardAction(ActionTypes.OpenUrl, "Let's get you started!", value: "https://confluence.endava.com/") },
+            };
+
+            return communitiesCard;
+        }
+
+        public static ThumbnailCard GetCompanyCard(string textBody)
+        {
+            var companyCard = new ThumbnailCard
+            {
+                Title = "Endava",
+                Subtitle = "Welcome to Endava",
+                Text = textBody,
+                Images = new List<CardImage> { new CardImage("https://s2.studylib.net/store/data/005525748_1-bb9ce29028162a7ed07a21c641cffd86.png") },
+                Buttons = new List<CardAction> { new CardAction(ActionTypes.OpenUrl, "Be more..", value: "https://www.endava.com/en") },
+            };
+
+            return companyCard;
         }
 
         public static SigninCard GetSigninCard()

@@ -107,8 +107,15 @@ namespace BotWithLUIS.Dialogs
 
                 var msg = $"Here is what I've found about: \"{result.InfoRequest}\" \n" +
                     $"  {result.InfoRespond}";
-                
-                await stepContext.Context.SendActivityAsync(result.Reply);
+                try
+                {
+                    await stepContext.Context.SendActivityAsync(result.Reply);
+                }
+                catch (Exception e)
+                {
+                    Logger.LogWarning($"LUIS Exception: {e.Message} Check your LUIS configuration.");
+                }
+
                 await stepContext.Context.SendActivityAsync(MessageFactory.Text("What else can I do for you?"));
 
                 var responseMessage = stepContext.Context.Activity.Text.ToLower();

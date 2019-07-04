@@ -47,53 +47,66 @@ namespace BotWithLUIS
 
                 if (intent == "ShowBenefitsContactInfo")
                 {
-                    details.InfoRespond = "Llamada a show benefits contacts" ;
+                    string textBody = "Deserialized body for the \'benefitsContact\' intent performed by Raidell's method.";
+                    details.Reply.Text += "Llamada a show benefitsContact";
+                    details.Reply.Attachments.Add(Cards.GetBenefitsContactCard(textBody).ToAttachment());
                 }
 
                 if (intent == "ShowBenefits")
                 {
-                    //details.InfoRespond = "Llamada a show benefits";
-                    details.Reply.Text += "Llamada a show benefits";
-                    details.Reply.Attachments.Add(Cards.GetAnimationCard().ToAttachment());
+                    string textBody = "Deserialized body for the \'benefits\' intent performed by Raidell's method.";
+                    details.Reply.Text += textBody;
+                    details.Reply.Attachments.Add(Cards.GetBenefitsCard().ToAttachment());
+                    
                 }
 
                 if (intent == "ShowBenefitsWFH")
                 {
-                    details.InfoRespond = "Llamada a show benefits WFH";
+                    string textBody = "Deserialized body for the \'benefitsWFH\' intent performed by Raidell's method.";
+                    details.Reply.Text += "Llamada a show benefitsWFH";
+                    details.Reply.Attachments.Add(Cards.GetBenefitsWFHCard(textBody).ToAttachment());
                 }
 
                 if (intent == "ShowCommunities")
                 {
-                    details.InfoRespond = "Llamada a show communities";
+                    string textBody = "Deserialized body for the \'Communities\' intent performed by Raidell's method.";
+                    details.Reply.Text += "Llamada a show Communities";
+                    details.Reply.Attachments.Add(Cards.GetCommunitiesCard(textBody).ToAttachment());
                 }
 
                 if (intent == "ShowCompanyInfo")
                 {
-                    details.InfoRespond = "Llamada a show Company Info";
+                    string textBody = "Deserialized body for the \'Company\' intent performed by Raidell's method.";
+                    details.Reply.Text += "Llamada a show Company";
+                    details.Reply.Attachments.Add(Cards.GetCompanyCard(textBody).ToAttachment());
                 }
 
                 if (intent == "ShowDaysOff")
                 {
-                    details.InfoRespond = "Llamada a show Days Off";
+                    string textBody = "Deserialized body for the \'DaysOff\' intent performed by Raidell's method.";
+                    details.Reply.Text += "Llamada a show DaysOff";
+                   // details.Reply.Attachments.Add(Cards.GetDaysOffCard(textBody).ToAttachment());
                 }
 
                 if (intent == "ShowReferralsInfo")
                 {
-                    details.InfoRespond = "Llamada a show Referrals Info ";
+                    string textBody = "Deserialized body for the \'Referrals\' intent performed by Raidell's method.";
+                    details.Reply.Text += "Llamada a show Referrals";
+                    //details.Reply.Attachments.Add(Cards.GetReferralsCard(textBody).ToAttachment());
                 }
 
                 if (intent == "ShowServiceDeskSupport")
                 {
-                    details.InfoRespond = "Llamada a Show Service Desk Support ";
+                    string textBody = "Deserialized body for the \'ServiceDeskSupport\' intent performed by Raidell's method.";
+                    details.Reply.Text += "Llamada a show ServiceDeskSupport";
+                    //details.Reply.Attachments.Add(Cards.GetServiceDeskSupportCard(textBody).ToAttachment());
                 }
 
-                if (intent == "Greetings")
-                {
-                    details.InfoRespond = "Setear intent null para seguir la charla?";
-                }
                 if (intent == "None")
                 {
-                    details.InfoRespond = "No encontró una Intent predefinida. ";
+                    string textBody = "Deserialized body for the \'benefitsContact\' intent performed by Raidell's method.";
+                    details.Reply.Text += "Llamada a show benefitsContact";
+                    details.Reply.Attachments.Add(Cards.GetBenefitsContactCard(textBody).ToAttachment());
                 }
             }
             catch (Exception e)
